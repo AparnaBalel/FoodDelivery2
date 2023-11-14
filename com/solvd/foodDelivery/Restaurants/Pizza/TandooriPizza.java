@@ -1,6 +1,6 @@
-package Restaurants.Pizza;
+package com.solvd.foodDelivery.Restaurants.Pizza;
 
-import Restaurants.RestaurantMenuCard;
+import com.solvd.foodDelivery.Restaurants.RestaurantMenuCard;
 
 public class TandooriPizza extends RestaurantMenuCard {
     public TandooriPizza(String menuName, double price, int time) {

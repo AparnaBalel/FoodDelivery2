@@ -1,14 +1,15 @@
-package Restaurants.BreakFast;
+package com.solvd.foodDelivery.Restaurants.BreakFast;
 
-public class IHop {
-    String menuName;
+public class DennyS {
+
+    String menuName;//
     double price;
     int time;
 
-    public IHop(String menuName, double price, int time) {
+    public DennyS(String menuName, double price, int time) {
         this.menuName = menuName;
         this.price = price;
-        this.time = time;//
+        this.time = time;
     }
 
     public String getMenuName() {
@@ -37,9 +38,6 @@ public class IHop {
 
     @Override
     public String toString() {
-        return "Asian: " + '\n' +
-              menuName + '\n' +
-             price + '\n' +
-             time ;
+        return "\n"+ "Denny's : " + menuName + ',' + price + ','+ time ;
     }
 }

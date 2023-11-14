@@ -1,4 +1,4 @@
-package Restaurants;
+package com.solvd.foodDelivery.Restaurants;
 
 public interface Menu {
 

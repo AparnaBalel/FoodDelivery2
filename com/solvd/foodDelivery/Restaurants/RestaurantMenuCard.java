@@ -1,16 +1,18 @@
-package Restaurants.BreakFast;
+package com.solvd.foodDelivery.Restaurants;
 
-public class DennyS {
+import java.util.ArrayList;
 
-    String menuName;//
+public abstract class RestaurantMenuCard {
+    String menuName;
     double price;
     int time;
 
-    public DennyS(String menuName, double price, int time) {
+    public RestaurantMenuCard(String menuName, double price, int time) {
         this.menuName = menuName;
         this.price = price;
         this.time = time;
     }
+
 
     public String getMenuName() {
         return menuName;
@@ -38,9 +40,6 @@ public class DennyS {
 
     @Override
     public String toString() {
-        return "Italian: " +
-             menuName + '\n' +
-             price + '\n'+
-                + time ;
+        return  menuName + ", $"+price +", "+"wait time: " + time +" min" ;
     }
 }

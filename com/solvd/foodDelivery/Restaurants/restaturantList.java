@@ -1,4 +1,4 @@
-package Restaurants;
+package com.solvd.foodDelivery.Restaurants;
 
 public abstract  class restaturantList {
 
@@ -11,9 +11,6 @@ public abstract  class restaturantList {
 
 
     abstract void RestaurantList(String burgers, String fastFood,String pizza, String cafe, String breakfast, String iceCream  );
-
-
-
 
 
     }

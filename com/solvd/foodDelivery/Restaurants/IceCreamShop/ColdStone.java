@@ -1,12 +1,12 @@
-package Restaurants.Cafe;
+package com.solvd.foodDelivery.Restaurants.IceCreamShop;
 
-public class CafeCoffeeDay {
+public class ColdStone {
 
-    String menuName;//
+    String menuName;
     double price;
     int time;
 
-    public CafeCoffeeDay(String menuName, double price, int time) {
+    public ColdStone(String menuName, double price, int time) {
         this.menuName = menuName;
         this.price = price;
         this.time = time;
@@ -38,9 +38,6 @@ public class CafeCoffeeDay {
 
     @Override
     public String toString() {
-        return "CafeCoffeeDay: " + '\n'+
-                 menuName + '\n' +
-                 price + '\n' +
-                 time ;
+        return  '\n'+ "ColdStoneCreamery: " + menuName + ',' + price + "," + time ;
     }
 }

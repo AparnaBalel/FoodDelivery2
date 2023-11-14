@@ -1,16 +1,15 @@
-package Restaurants;
+package com.solvd.foodDelivery.Restaurants.BreakFast;
 
-public abstract class RestaurantMenuCard {
+public class IHop {
     String menuName;
     double price;
     int time;
 
-    public RestaurantMenuCard(String menuName, double price, int time) {
+    public IHop(String menuName, double price, int time) {
         this.menuName = menuName;
         this.price = price;
-        this.time = time;
+        this.time = time;//
     }
-
 
     public String getMenuName() {
         return menuName;
@@ -38,6 +37,6 @@ public abstract class RestaurantMenuCard {
 
     @Override
     public String toString() {
-        return  menuName + ", $"+price +", "+"wait time: " + time +" min" ;
+        return "\n"+"IHop: " + ',' + menuName + ',' + price + ',' + time ;
     }
 }

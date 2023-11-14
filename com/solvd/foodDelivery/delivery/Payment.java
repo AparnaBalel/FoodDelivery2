@@ -1,4 +1,4 @@
-package com.solvd.foodDelivery;
+package com.solvd.foodDelivery.delivery;
 
 public interface Payment {
 

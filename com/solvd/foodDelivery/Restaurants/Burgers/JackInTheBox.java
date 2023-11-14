@@ -1,6 +1,6 @@
-package Restaurants.Burgers;
+package com.solvd.foodDelivery.Restaurants.Burgers;
 
-import Restaurants.RestaurantMenuCard;
+import com.solvd.foodDelivery.Restaurants.RestaurantMenuCard;
 
 public class JackInTheBox  extends RestaurantMenuCard {
 

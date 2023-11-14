@@ -1,23 +1,32 @@
-package Restaurants;
+package com.solvd.foodDelivery.Restaurants;
 
-import Restaurants.BreakFast.DennyS;
-import Restaurants.BreakFast.IHop;
-import Restaurants.Burgers.BurgerKing;
-import Restaurants.Burgers.JackInTheBox;
-import Restaurants.Cafe.CafeCoffeeDay;
-import Restaurants.Cafe.Starbucks;
-import Restaurants.FastFood.PandaExpress;
-import Restaurants.FastFood.Subway;
-import Restaurants.IceCreamShop.BaskinRobin;
-import Restaurants.IceCreamShop.ColdStoneCreamery;
-import Restaurants.Pizza.PizzaHut;
-import Restaurants.Pizza.TandooriPizza;
-import com.solvd.foodDelivery.nameAddress;
+import com.solvd.foodDelivery.LogInfo.CustomLogger;
+import com.solvd.foodDelivery.Restaurants.BreakFast.DennyS;
+import com.solvd.foodDelivery.Restaurants.BreakFast.IHop;
+import com.solvd.foodDelivery.Restaurants.Burgers.BurgerKing;
+import com.solvd.foodDelivery.Restaurants.Burgers.JackInTheBox;
+import com.solvd.foodDelivery.Restaurants.Cafe.CafeCoffeeDay;
+import com.solvd.foodDelivery.Restaurants.Cafe.Starbucks;
+import com.solvd.foodDelivery.Restaurants.FastFood.PandaExpress;
+import com.solvd.foodDelivery.Restaurants.FastFood.Subway;
+import com.solvd.foodDelivery.Restaurants.IceCreamShop.BaskinRobin;
+import com.solvd.foodDelivery.Restaurants.IceCreamShop.ColdStone;
+import com.solvd.foodDelivery.Restaurants.Pizza.PizzaHut;
+import com.solvd.foodDelivery.Restaurants.Pizza.TandooriPizza;
 
 public class AllRestaurant extends restaturantList  implements nameAddress, Menu{
+    private CustomLogger Logger;
+
+    public AllRestaurant() {
+        // Create an instance of CustomLogger for this class
+        this.Logger = new CustomLogger(AllRestaurant.class.getName());
+    }
 
     public void displayMenu(String menu) {
-        System.out.println( menu.toString() );
+        Logger.Info( menu.toString() );
+    }
+    public void displayMenu(String menu, double price, int time) {
+        Logger.Info( menu.toString() );
     }
     @Override
     public void processChoice(String choose) {
@@ -25,7 +34,7 @@ public class AllRestaurant extends restaturantList  implements nameAddress, Menu
     }
     @Override
     public void displayName(String name, String address) {
-        System.out.println(name+","+"\n"+"Address: "+ address);
+        Logger.Info(name+","+"\n"+"Address: "+ address);
     }
 
     public void burger(){
@@ -38,14 +47,14 @@ public class AllRestaurant extends restaturantList  implements nameAddress, Menu
            displayMenu(jackMenu.toString());
     }
     public String burgerKingMenu(){
-       BurgerKing burgerkingMenu = new BurgerKing("chicken Burger",5.00, 10);
+        BurgerKing burgerkingMenu = new BurgerKing("chicken Burger",5.00, 10);
         displayMenu(burgerkingMenu.toString());
         return String.valueOf(burgerkingMenu);
     }
     public String jackInTheBoxMenu(){
         JackInTheBox jackMenu = new JackInTheBox("tiny taco",4,4);
         displayMenu(jackMenu.toString());
-        return null;
+        return String.valueOf(jackMenu.toString());
     }
     public void cafe(){
         displayName("Cafe coffee day","3 E grant line ");
@@ -60,12 +69,12 @@ public class AllRestaurant extends restaturantList  implements nameAddress, Menu
     public String starbucksMenu(){
         Starbucks tea = new Starbucks("Chai Tea latte", 4.50, 10);
         displayMenu(tea.toString());
-        return null;
+        return tea.toString();
     }
     public String cafeCoffeeDayMenu(){
         CafeCoffeeDay coffeeMenu = new CafeCoffeeDay("mocha", 5, 5);
         displayMenu(coffeeMenu.toString());
-       return null;
+       return coffeeMenu.toString();
     }
     public void breakFast(){
         displayName("IHop","5 E grant line ");
@@ -76,15 +85,15 @@ public class AllRestaurant extends restaturantList  implements nameAddress, Menu
         DennyS pancake = new DennyS("Stack of Pancakes", 5.00, 10);
         displayMenu(pancake.toString());
     }
-    public Object ihopMenu(){
+    public String ihopMenu(){
         IHop omelette = new IHop("Spinach & Mushroom Omelette", 10.50, 15);
         displayMenu(omelette.toString());
-        return null;
+        return omelette.toString();
     }
-    public Object dennysMenu(){
+    public String dennysMenu(){
         DennyS pancake = new DennyS("Stack of Pancakes", 5.00, 10);
         displayMenu(pancake.toString());
-        return null;
+        return pancake.toString();
     }
     public void fastFood(){
         displayName("Panda Express","7 E grant line ");
@@ -95,34 +104,36 @@ public class AllRestaurant extends restaturantList  implements nameAddress, Menu
         Subway footLong = new Subway("Veggie Delite", 12.50, 8);
         displayMenu(footLong.toString());
     }
-    public Object pandaExpressMenu(){
+    public String pandaExpressMenu(){
         PandaExpress chicken = new PandaExpress("Orange Chicken", 8.50, 5);
         displayMenu(chicken.toString());
-        return null;
+        return chicken.toString();
     }
-    public Object subwayMenu(){
+    public String subwayMenu(){
         Subway footLong = new Subway("Veggie Delite", 12.50, 8);
         displayMenu(footLong.toString());
-        return null;
+        return footLong.toString();
     }
-    public void iceCream(){
-        displayName("baskinRobin","9 E grant line ");
-        BaskinRobin iceCream = new BaskinRobin("Banana Royale", 10.50, 15);
-        displayMenu(iceCream.toString());
+
+          //Generic class
+    BaskinRobin<String, Double, Integer> baskinRobin = new BaskinRobin<>("Banana Royale",10.50, 8);
+
+    public void iceCream() {
+        displayName("baskinRobin", "9 E grant line ");
+        displayMenu( baskinRobin.toString());
         System.out.println();
-        displayName("coldStoneCreamery","10 E grant line ");
-        ColdStoneCreamery butter = new ColdStoneCreamery("Peanut Butter Cup", 8.50, 15);
+        displayName("coldStoneCreamery", "10 E grant line ");
+        ColdStone butter = new ColdStone("Peanut Butter Cup", 8.50, 15);
         displayMenu(butter.toString());
     }
-    public Object baskinRobinMenu(){
-        BaskinRobin iceCream = new BaskinRobin("Banana Royale", 10.50, 15);
-        displayMenu(iceCream.toString());
-        return null;
+    public String baskinRobinMenu(){
+        displayMenu( baskinRobin.toString());
+        return baskinRobin.toString();
     }
-    public Object coldStoneMenu(){
-        ColdStoneCreamery butter = new ColdStoneCreamery("Peanut Butter Cup", 8.50, 15);
+    public String coldStoneMenu(){
+        ColdStone butter = new ColdStone("Peanut Butter Cup", 8.50, 15);
         displayMenu(butter.toString());
-        return null;
+        return butter.toString();
     }
 
     public void Pizza(){
@@ -131,24 +142,24 @@ public class AllRestaurant extends restaturantList  implements nameAddress, Menu
         displayMenu(veggie.toString());
         System.out.println();
         displayName("Tandoori Pizza","12 E grant line ");
-       TandooriPizza tandoori = new TandooriPizza("Tandoori Chicken", 20.50, 25);
+        TandooriPizza tandoori = new TandooriPizza("Tandoori Chicken", 20.50, 25);
         displayMenu(tandoori.toString());
     }
-    public Object PizzaHutMenu(){
+    public String PizzaHutMenu(){
         PizzaHut veggie = new PizzaHut("spinach alfredo", 15.00, 20);
         displayMenu(veggie.toString());
-        return null;
+        return veggie.toString();
     }
     public String TandooriMenu(){
         TandooriPizza tandoori = new TandooriPizza("Tandoori Chicken", 20.50, 25);
         displayMenu(tandoori.toString());
-        return null;
+        return tandoori.toString();
     }
 
 
     @Override
-    void RestaurantList(String burgers, String fastFood, String pizza, String cafe, String breakfast, String iceCream) {
-        System.out.println(burgers+ "\n"+ fastFood +"\n"+ pizza + "\n"+ cafe + "\n"+ breakfast + "\n"+ iceCream);
+    void  RestaurantList(String burgers, String fastFood, String pizza, String cafe, String breakfast, String iceCream) {
+        Logger.Info("\n"+burgers+ "\n"+ fastFood +"\n"+ pizza + "\n"+ cafe + "\n"+ breakfast + "\n"+ iceCream);
 
     }
 }

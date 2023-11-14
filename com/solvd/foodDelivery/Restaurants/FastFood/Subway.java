@@ -1,6 +1,6 @@
-package Restaurants.FastFood;
+package com.solvd.foodDelivery.Restaurants.FastFood;
 
-import Restaurants.RestaurantMenuCard;
+import com.solvd.foodDelivery.Restaurants.RestaurantMenuCard;
 
 public class Subway extends RestaurantMenuCard {
 
